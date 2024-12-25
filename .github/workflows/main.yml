@@ -24,5 +24,10 @@ jobs:
       - name: Generate auth hosts
         run: ssh-keyscan -H ${{env.SERVER_HOST}} >> ~/.ssh/known_hosts
 
-        #Deploy
-      - run: rsync --archive --compress -progress . ${{env.SERVER_USER}}@${{env.SERVER_HOST}}:${{env.SERVER_PATH}}
+      - name: SSH into server and run Git commands
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{env.SERVER_USER}}@${{env.SERVER_HOST}} << 'EOF'
+            cd ${{env.SERVER_PATH}}
+            git fetch origin
+            git pull origin main
+          EOF
