@@ -1,9 +1,6 @@
 FROM php:8.3-fpm
 
-RUN echo "deb http://mirror.yandex.ru/debian bookworm main restricted universe multiverse" > /etc/apt/sources.list \
-    && echo "deb http://mirror.yandex.ru/debian bookworm-updates main restricted universe multiverse" >> /etc/apt/sources.list \
-    && echo "deb http://mirror.yandex.ru/debian-security bookworm-security main restricted universe multiverse" >> /etc/apt/sources.list \
-    && apt-get update \
+RUN apt-get update \
     && apt-get install -y apt-utils libpq-dev libpng-dev libzip-dev zip unzip git \
     && docker-php-ext-install pdo_mysql bcmath gd zip \
     && apt-get clean \
