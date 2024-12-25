@@ -1,0 +1,28 @@
+name: Deploy to Server
+
+on: workflow_dispatch
+
+env:
+  SERVER_HOST: 89.104.69.167
+  SERVER_USER: root
+  SERVER_PATH: /var/www/test
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2.3.1
+        with:
+          key: "${{secrets.MY_KEY}}"
+          known_hosts: "just-a-placeholder-so-we-dont-get-errors"
+
+      - name: Generate auth hosts
+        run: ssh-keyscan -H ${{env.SERVER_HOST}} >> ~/.ssh/known_hosts
+
+        #Deploy
+      - run: rsync --archive --compress -progress . ${{env.SERVER_USER}}@${{env.SERVER_HOST}}:${{env.SERVER_PATH}}
