@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +12,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['namespace' => 'App\Http\Controllers\Basket'], function () {
+    Route::get('/storage', IndexController::class)->name('storage.index');
+});
+Route::group(['namespace' => 'App\Http\Controllers\Category'], function () {
+    Route::get('/index', IndexController::class)->name('category.index');
+});
 Route::get('/', function () {
     return view('layouts.welcome');
-});
-Route::get('/storage', function () {
-    return view('pages.storage');
-});
+})->name('welcome');
+

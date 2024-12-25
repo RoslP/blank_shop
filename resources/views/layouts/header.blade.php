@@ -7,14 +7,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Главная</a>
+            <li class="nav-item abc228_index">
+                <a class="nav-link" href={{ route('welcome')  }}><i class="fas fa-tachometer-alt"></i>Главная</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Категории</a>
+            <li class="nav-item abc228_cat">
+                <a class="nav-link" href="{{ route('category.index') }}"><i class="far fa-address-book"></i>Категории</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Корзина</a>
+            <li class="nav-item abc228_storage">
+                <a class="nav-link" href={{ route('storage.index')  }}><i class="far fa-clone"></i>Корзина</a>
             </li>
 
         </ul>
@@ -25,8 +25,24 @@
     <script>
         // ---------Responsive-navbar-active-animation-----------
         function test(){
+            let a = 'abc228_index';
+            if (window.location.pathname==='/')
+            {
+                a='abc228_index'
+                $('li[class*="abc228_index"]').removeClass('abc228_index').addClass('active');
+
+            }
+            if (window.location.pathname==='/index')
+            {
+                a='abc228_cat'
+                $('li[class*="abc228_cat"]').removeClass('abc228_cat').addClass('active');
+            }
+            if (window.location.pathname==='/storage')
+            {
+                a='abc228_storage'
+                $('li[class*="abc228_storage"]').removeClass('abc228_storage').addClass('active');
+            }
             var tabsNewAnim = $('#navbarSupportedContent');
-            var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
             var activeItemNewAnim = tabsNewAnim.find('.active');
             var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
             var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
@@ -37,20 +53,6 @@
                 "left":itemPosNewAnimLeft.left + "px",
                 "height": activeWidthNewAnimHeight + "px",
                 "width": activeWidthNewAnimWidth + "px"
-            });
-            $("#navbarSupportedContent").on("click","li",function(e){
-                $('#navbarSupportedContent ul li').removeClass("active");
-                $(this).addClass('active');
-                var activeWidthNewAnimHeight = $(this).innerHeight();
-                var activeWidthNewAnimWidth = $(this).innerWidth();
-                var itemPosNewAnimTop = $(this).position();
-                var itemPosNewAnimLeft = $(this).position();
-                $(".hori-selector").css({
-                    "top":itemPosNewAnimTop.top + "px",
-                    "left":itemPosNewAnimLeft.left + "px",
-                    "height": activeWidthNewAnimHeight + "px",
-                    "width": activeWidthNewAnimWidth + "px"
-                });
             });
         }
         $(document).ready(function(){
@@ -65,41 +67,5 @@
         });
 
 
-
-        // --------------add active class-on another-page move----------
-        jQuery(document).ready(function($){
-            // Get current path and find target link
-            var path = window.location.pathname.split("/").pop();
-
-            // Account for home page with empty path
-            if ( path == '' ) {
-                path = 'index.html';
-            }
-
-            var target = $('#navbarSupportedContent ul li a[href="'+path+'"]');
-            // Add active class to target link
-            target.parent().addClass('active');
-        });
-
-
-
-
-        // Add active class on another page linked
-        // ==========================================
-        // $(window).on('load',function () {
-        //     var current = location.pathname;
-        //     console.log(current);
-        //     $('#navbarSupportedContent ul li a').each(function(){
-        //         var $this = $(this);
-        //         // if the current path is like this link, make it active
-        //         if($this.attr('href').indexOf(current) !== -1){
-        //             $this.parent().addClass('active');
-        //             $this.parents('.menu-submenu').addClass('show-dropdown');
-        //             $this.parents('.menu-submenu').parent().addClass('active');
-        //         }else{
-        //             $this.parent().removeClass('active');
-        //         }
-        //     })
-        // });
     </script>
 @endsection
