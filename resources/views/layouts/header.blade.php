@@ -42,6 +42,10 @@
                 a='abc228_storage'
                 $('li[class*="abc228_storage"]').removeClass('abc228_storage').addClass('active');
             }
+            if (window.location.pathname!=='/storage'&&window.location.pathname!=='/index'&&window.location.pathname!=='/')
+            {
+                $('li[class*="abc228_cat"]').removeClass('abc228_cat').addClass('active');
+            }
             var tabsNewAnim = $('#navbarSupportedContent');
             var activeItemNewAnim = tabsNewAnim.find('.active');
             var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();

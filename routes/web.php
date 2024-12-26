@@ -18,7 +18,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Basket'], function () {
 Route::group(['namespace' => 'App\Http\Controllers\Category'], function () {
     Route::get('/index', IndexController::class)->name('category.index');
 });
-Route::get('/', function () {
-    return view('layouts.welcome');
-})->name('welcome');
+Route::get('/',[\App\Http\Controllers\IndexController::class,'index'])->name('welcome');
+Route::get('/product/{id}', \App\Http\Controllers\Product\IndexController::class)->name('product.show');
 
