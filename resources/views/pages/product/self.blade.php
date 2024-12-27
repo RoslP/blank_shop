@@ -38,7 +38,7 @@
             <b class="b">{{ $product->name }}</b>
             <p>{{ $product->description }}</p>
             <div class="row">
-                <button class="purchase-button w-auto">В корзину</button>
+                <button onclick="getIdFunction({{$product->id}})" class="purchase-button w-auto">В корзину</button>
                 <a class="a-quantity w-auto">Осталось в наличии: {{$product->quantity}}</a>
             </div>
         </div>
@@ -112,5 +112,28 @@
             border-radius: 5px;
         }
     </style>
+    <script>
+        function getIdFunction(id) {
+            axios.post('/api/store', {data: id})
+                .then(res => {
+                        if (res.status === 200) {
+                            let products = JSON.parse(sessionStorage.getItem('products'))
+
+                            if (products !== null && products[res.data.id]) {
+                                products[res.data.id]['quantity']++;
+                                sessionStorage.setItem('products', JSON.stringify(products))
+
+
+                            } else {
+                                let items = JSON.parse(sessionStorage.getItem('products')) || {};
+                                let product = {...items, [res.data.id]: res.data}
+                                sessionStorage.setItem('products', JSON.stringify(product))
+                            }
+                            location.reload()
+                        }
+                    }
+                )
+        }
+    </script>
 @endsection
 

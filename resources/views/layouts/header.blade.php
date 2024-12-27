@@ -11,7 +11,7 @@
                 <a class="nav-link" href={{ route('welcome')  }}><i class="fa-solid fa-shop"></i>Главная</a>
             </li>
             <li class="nav-item abc228_storage">
-                <a class="nav-link" href={{ route('storage.index')  }}><i class="fa-solid fa-cart-shopping"></i><b>2</b> Корзина</a>
+                <a class="nav-link" href={{ route('storage.index')  }}><i class="fa-solid fa-cart-shopping"></i><b id="card-amount"></b> Корзина</a>
             </li>
         </ul>
     </div>
@@ -60,6 +60,18 @@
             $(".navbar-collapse").slideToggle(300);
             setTimeout(function(){ test(); });
         });
+
+        let count=0
+        let card=  JSON.parse(sessionStorage.getItem('products'))
+        Object.values(card).forEach(item=>{
+            count += item.quantity
+        })
+        let cardAmountElement = document.getElementById('card-amount');
+        if (count !== 0) {
+            cardAmountElement.innerText = count;
+        } else {
+            cardAmountElement.innerText = 0;
+        }
 
 
     </script>
