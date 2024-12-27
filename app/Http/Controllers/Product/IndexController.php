@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
     public function __invoke($id)
     {
-        $product = Product::with('category')->where('id', $id)->first();
+        $product = Product::with('category')->where('id','=' ,$id)->first();
         return view('pages.product.self', compact('product'));
     }
 }

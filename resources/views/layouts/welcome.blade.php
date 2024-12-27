@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Dev Sandbox</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,6 +16,8 @@
             crossorigin="anonymous"></script>
     <!-- Styles -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body class="antialiased">
@@ -23,10 +25,15 @@
     class="relative sm:flex min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
     @include('layouts.header')
     @include('layouts.footer')
+    @include('layouts.category')
     <div class="container">
         <div>
             @yield('content_h')
         </div>
+        <div>
+            @yield('category')
+        </div>
+
         <div>
             @yield('content')
         </div>

@@ -1,6 +1,6 @@
 @section('content_h')
 <nav class="navbar navbar-expand-custom navbar-mainbg">
-    <a class="navbar-brand navbar-logo" style="padding-left: 10%">entergo test</a>
+    <a class="navbar-brand navbar-logo" style="padding-left: 10%">enterego test</a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
     </button>
@@ -8,15 +8,11 @@
         <ul class="navbar-nav ml-auto">
             <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
             <li class="nav-item abc228_index">
-                <a class="nav-link" href={{ route('welcome')  }}><i class="fas fa-tachometer-alt"></i>Главная</a>
-            </li>
-            <li class="nav-item abc228_cat">
-                <a class="nav-link" href="{{ route('category.index') }}"><i class="far fa-address-book"></i>Категории</a>
+                <a class="nav-link" href={{ route('welcome')  }}><i class="fa-solid fa-shop"></i>Главная</a>
             </li>
             <li class="nav-item abc228_storage">
-                <a class="nav-link" href={{ route('storage.index')  }}><i class="far fa-clone"></i>Корзина</a>
+                <a class="nav-link" href={{ route('storage.index')  }}><i class="fa-solid fa-cart-shopping"></i><b>2</b> Корзина</a>
             </li>
-
         </ul>
     </div>
 </nav>
@@ -32,19 +28,14 @@
                 $('li[class*="abc228_index"]').removeClass('abc228_index').addClass('active');
 
             }
-            if (window.location.pathname==='/index')
-            {
-                a='abc228_cat'
-                $('li[class*="abc228_cat"]').removeClass('abc228_cat').addClass('active');
-            }
             if (window.location.pathname==='/storage')
             {
                 a='abc228_storage'
                 $('li[class*="abc228_storage"]').removeClass('abc228_storage').addClass('active');
             }
-            if (window.location.pathname!=='/storage'&&window.location.pathname!=='/index'&&window.location.pathname!=='/')
+            if (window.location.pathname!=='/storage'&&window.location.pathname!=='/')
             {
-                $('li[class*="abc228_cat"]').removeClass('abc228_cat').addClass('active');
+                $('li[class*="abc228_index"]').removeClass('abc228_index').addClass('active');
             }
             var tabsNewAnim = $('#navbarSupportedContent');
             var activeItemNewAnim = tabsNewAnim.find('.active');

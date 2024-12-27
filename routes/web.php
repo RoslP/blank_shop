@@ -16,8 +16,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Basket'], function () {
     Route::get('/storage', IndexController::class)->name('storage.index');
 });
 Route::group(['namespace' => 'App\Http\Controllers\Category'], function () {
-    Route::get('/index', IndexController::class)->name('category.index');
+    Route::get('/category/{id}', IndexController::class)->name('category');
 });
 Route::get('/',[\App\Http\Controllers\IndexController::class,'index'])->name('welcome');
 Route::get('/product/{id}', \App\Http\Controllers\Product\IndexController::class)->name('product.show');
+
 

@@ -25,13 +25,13 @@
             object-fit: cover;
         }
 
-        .product-list h3
-        {
+        .product-list h3 {
             width: 200px;
             height: 100px;
             max-height: 100%;
             max-width: 100%;
         }
+
         .product-list {
             padding: 10px;
         }
@@ -85,24 +85,38 @@
         }
     </style>
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: 4%">
             @foreach($products as $product)
                 <div class="product-item" style="background: #edf2f7">
                     <a href="{{ route('product.show', ['id' => $product->id]) }}">
                         @if ($product->images->first())
                             <img src="{{$product->images->first()->path}}" alt="Category Image">
                         @else
-                            <img src="https://yandex-images.clstorage.net/fAy9R9331/e27e60KDZu/RSQm5RzWZotAmOzItbpi8yT86vYP7ZfhJgY79TknENiIuyxUpikREdxwgrb8l8ZtvDzHrBX7qH2juOShRCosOwd2ZLFbiCGLRYynwvmgbuMxsPe1Ff_P7RA9R4EdTWa6-ctcK-xxGxCPPsjyuv-hfcpciahMuoISy5eBnVJGTGdgAT_pAOEwjnCZqtCSllfZBrTS6wili5MFIFWKLUNmj_bAXwH6QxYfvgiI9ZXBihbvf4iYVpqOOcuAuJRNYl52SyAk0ALWBYR1srjApaRVxDe4_sE_m4yPOS9ukxVhUYrc_l8P1mIGH5wVkfejwok03EWmiEakqR3bl52PQ3B9WEYnJPUi_SGjTIWE25uGR-IQk_HrArqNqDUvYYwcZkq98sZlF-JAGwWhHqLzosyXGOxsgYFWhY4x2JynnHticF9kCCD3AOAFgl6cgeOioW3ZEJXz6g6pqpomBFGVGF5AuNPFUgrBRx4dgTyo-rXQizPCX7aeYJ2kAsORl6hcZV11Ui8r1gfjL4pRkY_ZvqdOwRu789Q2ho2aIyZhqBtgY6zX1kAS8V0kIYINj-Oc7ZsVx02qr1ekuR3iobqdYm10Q1goOMcp6x2nSoWKybW1X_MukMLpA4y9lQAgYqwJVFuO0vVRFMFkGwScMovrgfSLBOlLhZtrubU53ZCXtEp1SH1cEjzJBPAagmmNlNCBk2PQEJvK3DGptq87EnKVJ1NRnsjFWCf0dhk2vSSNwan3lhbIeqiYZ62iOfmVoJpZUlZDXTUE_Q3xMYFympbUvqRu9DO65cUylqm3PSRzkQpBTrnX9UwX7XIHAboslNW7yrc4316Rq26GqBrUrL6MbUJbY2cNMdIJ8z2-famT-b2tQvw0kML7H42vnCsHbboNR16E2-t-JvJlMhmOIZL6oM6HD-12m51vra86z521h0lJcX5wMjfqLNEKv3CPhvmAlUjlBpfHwgyOlZEZMXG2C3c" alt="Default Image">
+                            <img
+                                src="https://yandex-images.clstorage.net/fAy9R9331/e27e60KDZu/RSQm5RzWZotAmOzItbpi8yT86vYP7ZfhJgY79TknENiIuyxUpikREdxwgrb8l8ZtvDzHrBX7qH2juOShRCosOwd2ZLFbiCGLRYynwvmgbuMxsPe1Ff_P7RA9R4EdTWa6-ctcK-xxGxCPPsjyuv-hfcpciahMuoISy5eBnVJGTGdgAT_pAOEwjnCZqtCSllfZBrTS6wili5MFIFWKLUNmj_bAXwH6QxYfvgiI9ZXBihbvf4iYVpqOOcuAuJRNYl52SyAk0ALWBYR1srjApaRVxDe4_sE_m4yPOS9ukxVhUYrc_l8P1mIGH5wVkfejwok03EWmiEakqR3bl52PQ3B9WEYnJPUi_SGjTIWE25uGR-IQk_HrArqNqDUvYYwcZkq98sZlF-JAGwWhHqLzosyXGOxsgYFWhY4x2JynnHticF9kCCD3AOAFgl6cgeOioW3ZEJXz6g6pqpomBFGVGF5AuNPFUgrBRx4dgTyo-rXQizPCX7aeYJ2kAsORl6hcZV11Ui8r1gfjL4pRkY_ZvqdOwRu789Q2ho2aIyZhqBtgY6zX1kAS8V0kIYINj-Oc7ZsVx02qr1ekuR3iobqdYm10Q1goOMcp6x2nSoWKybW1X_MukMLpA4y9lQAgYqwJVFuO0vVRFMFkGwScMovrgfSLBOlLhZtrubU53ZCXtEp1SH1cEjzJBPAagmmNlNCBk2PQEJvK3DGptq87EnKVJ1NRnsjFWCf0dhk2vSSNwan3lhbIeqiYZ62iOfmVoJpZUlZDXTUE_Q3xMYFympbUvqRu9DO65cUylqm3PSRzkQpBTrnX9UwX7XIHAboslNW7yrc4316Rq26GqBrUrL6MbUJbY2cNMdIJ8z2-famT-b2tQvw0kML7H42vnCsHbboNR16E2-t-JvJlMhmOIZL6oM6HD-12m51vra86z521h0lJcX5wMjfqLNEKv3CPhvmAlUjlBpfHwgyOlZEZMXG2C3c"
+                                alt="Default Image">
                         @endif
                         <div class="product-list">
                             <h3>{{$product->name}}</h3>
                             <span class="price">{{$product->price}} руб</span>
                         </div>
-                    <a href="#" class="button" onclick="addToCart(event)">В корзину</a>
+                        <a class="button" onclick="getIdFunction({{$product->id}})">В корзину</a>
                 </div>
             @endforeach
         </div>
     </div>
 
+    <script>
+        function getIdFunction(id) {
+            axios.post('/api/store', {data: id})
+                .then(res => {
+                    console.log(res.data)
+                    // if (res.status === 200) {
+                        // location.reload();
+                    // }
+                })
+        }
+
+    </script>
 @endsection
 
