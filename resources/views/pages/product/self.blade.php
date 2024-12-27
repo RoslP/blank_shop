@@ -39,8 +39,9 @@
             <p>{{ $product->description }}</p>
             <div class="row">
                 <button onclick="getIdFunction({{$product->id}})" class="purchase-button w-auto">В корзину</button>
-                <a class="a-quantity w-auto">Осталось в наличии: {{$product->quantity}}</a>
+                <p class="a-quantity w-auto"><b>Цена {{ $product->price }}</b></p>
             </div>
+            <a class=" w-auto">Осталось в наличии : <b>{{$product->quantity}}</b></a>
         </div>
     </div>
     <style>
