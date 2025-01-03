@@ -72,7 +72,16 @@
         } else {
             cardAmountElement.innerText = 0;
         }
-
+        document.addEventListener('DOMContentLoaded', () => {
+            const products = sessionStorage.getItem('products');
+            const cartIcon = document.querySelector('.fa-cart-shopping');
+            if (products) {
+                cartIcon.classList.add('fa-beat-fade');
+            } else {
+                console.log(123)
+                cartIcon.classList.remove('fa-beat-fade');
+            }
+        });
 
     </script>
 @endsection
