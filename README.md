@@ -28,3 +28,6 @@
       ====================================================
       Зайти на localhos:8876 - откроется сайт
 
+![image](https://github.com/user-attachments/assets/2cd665e6-7627-49a6-bcbf-ba025c78a00a)
+
+![image](https://github.com/user-attachments/assets/492c2c40-77fd-463c-b299-40e8d14a2ba7)
